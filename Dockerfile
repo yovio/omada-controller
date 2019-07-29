@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 MAINTAINER Yovi Oktofianus <yovio@hotmail.com>
 
-ARG OMADA_SOURCE=https://static.tp-link.com/2019/201905/20190527/Omada_Controller_v3.1.13_linux_x64.tar.gz
+ARG OMADA_SOURCE=https://static.tp-link.com/2019/201907/20190726/Omada_Controller_v3.2.1_linux_x64.tar.gz
 
 # install runtime dependencies
 RUN apt-get update &&\
