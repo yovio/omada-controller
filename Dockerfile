@@ -5,7 +5,7 @@ ARG OMADA_SOURCE=https://static.tp-link.com/2019/201907/20190726/Omada_Controlle
 
 # install runtime dependencies
 RUN apt-get update &&\
-  apt-get install -y libcap-dev net-tools curl tar &&\
+  apt-get install -y libcap-dev net-tools curl tar tzdata &&\
   rm -rf /var/lib/apt/lists/*
 
 # install omada controller (instructions taken from install.sh); then create a user & group and set the appropriate file system permissions
