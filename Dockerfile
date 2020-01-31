@@ -4,9 +4,12 @@ MAINTAINER Yovi Oktofianus <yovio@hotmail.com>
 ARG OMADA_SOURCE=https://static.tp-link.com/2020/202001/20200116/Omada_Controller_v3.2.6_linux_x64.tar.gz
                  
 # install runtime dependencies
-RUN apt-get update &&\
+RUN export DEBIAN_FRONTEND=noninteractive && \
+  apt-get update &&\
   apt-get install -y libcap-dev net-tools curl tar tzdata &&\
-  rm -rf /var/lib/apt/lists/*
+  rm -rf /var/lib/apt/lists/* && \
+  ln -fs /usr/share/zoneinfo/America/Chicago /etc/localtime && \
+  dpkg-reconfigure --frontend noninteractive tzdata
 
 # install omada controller (instructions taken from install.sh); then create a user & group and set the appropriate file system permissions
 RUN cd /tmp &&\
