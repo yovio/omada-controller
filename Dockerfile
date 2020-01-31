@@ -16,8 +16,7 @@ RUN cd /tmp &&\
   curl $OMADA_SOURCE -o omada.tar.gz &&\
   tar -xvzf omada.tar.gz &&\  
   rm /tmp/omada.tar.gz &&\
-  cd Omada* &&\
-  cd Omada* &&\  
+  cd Omada* &&\    
   mkdir /opt/tplink/EAPController -vp &&\
   cp bin /opt/tplink/EAPController -r &&\
   cp data /opt/tplink/EAPController -r &&\
