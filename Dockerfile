@@ -7,7 +7,7 @@ ARG OMADA_SOURCE=https://static.tp-link.com/2020/202007/20200720/Omada_SDN_Contr
 # install runtime dependencies
 RUN export DEBIAN_FRONTEND=noninteractive && \
   apt-get update &&\
-  apt-get install -y libcap-dev net-tools curl tar tzdata &&\
+  apt-get install -y libcap-dev net-tools curl tar tzdata default-jre &&\
   rm -rf /var/lib/apt/lists/* && \
   ln -fs /usr/share/zoneinfo/America/Chicago /etc/localtime && \
   dpkg-reconfigure --frontend noninteractive tzdata
@@ -26,10 +26,8 @@ RUN cd /tmp &&\
   cp keystore /opt/tplink/EAPController -r &&\
   cp lib /opt/tplink/EAPController -r &&\
   cp install.sh /opt/tplink/EAPController -r &&\
-  cp uninstall.sh /opt/tplink/EAPController -r &&\
-  cp jre /opt/tplink/EAPController/jre -r &&\
-  chmod 755 /opt/tplink/EAPController/bin/* &&\
-  chmod 755 /opt/tplink/EAPController/jre/bin/* &&\
+  cp uninstall.sh /opt/tplink/EAPController -r &&\  
+  chmod 755 /opt/tplink/EAPController/bin/* &&\  
   cd /tmp &&\
   rm -rf /tmp/Omada* &&\
   groupadd -g 508 omada &&\
@@ -41,4 +39,4 @@ USER omada
 WORKDIR /opt/tplink/EAPController
 EXPOSE 8088 8043
 VOLUME ["/opt/tplink/EAPController/data","/opt/tplink/EAPController/work","/opt/tplink/EAPController/logs"]
-CMD ["/opt/tplink/EAPController/jre/bin/java","-server","-Xms128m","-Xmx1024m","-XX:MaxHeapFreeRatio=60","-XX:MinHeapFreeRatio=30","-XX:+HeapDumpOnOutOfMemoryError","-XX:-UsePerfData","-Deap.home=/opt/tplink/EAPController","-cp","/opt/tplink/EAPController/lib/*:","com.tp_link.eap.start.EapLinuxMain"]
+CMD ["java","-server","-Xms128m","-Xmx1024m","-XX:MaxHeapFreeRatio=60","-XX:MinHeapFreeRatio=30","-XX:+HeapDumpOnOutOfMemoryError","-XX:-UsePerfData","-Deap.home=/opt/tplink/EAPController","-cp","/opt/tplink/EAPController/lib/*:","com.tp_link.eap.start.EapLinuxMain"]
