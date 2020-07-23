@@ -1,7 +1,8 @@
 FROM ubuntu:18.04
 MAINTAINER Yovi Oktofianus <yovio@hotmail.com>
 
-ARG OMADA_SOURCE=https://static.tp-link.com/2020/202004/20200420/Omada_Controller_v3.2.10_linux_x64.tar.gz                 
+ARG OMADA_SOURCE=https://static.tp-link.com/2020/202007/20200720/Omada_SDN_Controller_v4.1.5_linux_x64.tar.gz
+                 
                  
 # install runtime dependencies
 RUN export DEBIAN_FRONTEND=noninteractive && \
